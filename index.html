@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="format-detection" content="telephone=no">
+  <meta name="msapplication-tap-highlight" content="no">
+  <meta name="screen-orientation" content="portrait">
+  <meta name="x5-orientation" content="portrait">
+  <meta name="description" content=""/>
+  <title>元素拖拽</title>
+  <script src="./drag.js"></script>
+  <style>
+    html,body{ height: 100%;}
+    html{
+      background-color: #eee;
+    }
+    body{
+      position: relative;
+      max-width: 640px;
+      margin: 0 auto;
+      background-color: #fff;
+    }
+    .box{
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      left: 100px;
+      top: 100px;
+      z-index: 1;
+      background-color: #f00;
+      transition: transform 1s;
+    }
+    .box.hide{
+      transform: scale(0);
+    }
+    .target{
+      position: absolute;
+      width: 200px;
+      height: 200px;
+      right: 100px;
+      top: 100px;
+      border-radius: 100%;
+      background-color: #000;
+    }
+  </style>
+</head>
+<body ontouchstart="">
+  <div class="box"></div>
+  <div class="target"></div>
+<script>
+    new Drag('.box', {
+      target: '.target',
+      back: true
+    }).then(res => {
+      document.querySelector('.box').classList.add('hide');
+    });
+</script>
+</body>
+</html>
